@@ -25,7 +25,15 @@ SECRET_KEY = 'django-insecure-x6bz8k0@rk+u3z-qh7s8qn&st10jtu4gj%l266-o30*t#qhh(_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'jewellery-shop-ff61.onrender.com',
+    '127.0.0.1',  # for local dev
+    'localhost',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://jewellery-shop-ff61.onrender.com",
+]
 
 
 # Application definition
