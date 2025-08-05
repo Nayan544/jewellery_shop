@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .preview-container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .preview-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .preview-container table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .preview-container th,
+    .preview-container td {
+        text-align: left;
+        padding: 10px 15px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .preview-container th {
+        width: 40%;
+        background-color: #f7f7f7;
+        font-weight: 600;
+    }
+
+    .preview-container td strong {
+        font-size: 16px;
+        color: #000;
+    }
+
+    .preview-container a {
+        display: inline-block;
+        margin-right: 15px;
+        padding: 10px 15px;
+        background-color: #343a40;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .preview-container a:hover {
+        background-color: #23272b;
+    }
+</style>
+
+<div class="preview-container">
+    <h2>Invoice Preview</h2>
+
+    <table>
+        <tr><th>Customer Name</th><td>{{ invoice.customer_name }}</td></tr>
+        <tr><th>Mobile Number</th><td>{{ invoice.mobile_number }}</td></tr>
+        <tr><th>Gross Weight</th><td>{{ invoice.gross_weight }} g</td></tr>
+        <tr><th>Stone Type</th><td>{{ invoice.stone_type }}</td></tr>
+        <tr><th>Gold Rate</th><td>₹{{ invoice.gold_rate }}</td></tr>
+        <tr><th>Stone Price</th><td>₹{{ invoice.stone_price }}</td></tr>
+        <tr><th>Making Charge %</th><td>{{ invoice.making_charge_percent }}%</td></tr>
+        <tr><th>CGST</th><td>₹{{ invoice.cgst }}</td></tr>
+        <tr><th>SGST</th><td>₹{{ invoice.sgst }}</td></tr>
+        <tr><th><strong>Total Price</strong></th><td><strong>₹{{ invoice.total_price }}</strong></td></tr>
+    </table>
+
+    <a href="{% url 'billing:invoice_pdf' invoice.id %}">Download PDF</a>
+    <a href="{% url 'billing:invoice_history' %}">Back to History</a>
+</div>
+
+{% endblock %}

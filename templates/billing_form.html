@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .invoice-container {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .invoice-container h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+    }
+
+    .invoice-container input,
+    .invoice-container select,
+    .invoice-container textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .invoice-container button {
+        width: 100%;
+        padding: 12px;
+        background-color: #343a40;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .invoice-container button:hover {
+        background-color: #23272b;
+    }
+</style>
+
+<div class="invoice-container">
+    <h2>Create Invoice</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Generate Invoice</button>
+    </form>
+</div>
+
+{% endblock %}
